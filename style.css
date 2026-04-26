@@ -1,0 +1,53 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { background-color: #f0f2f5; color: #333; }
+.container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+
+/* Screen Toggling */
+.screen { display: none; }
+.screen.active { display: block; }
+
+/* Setup Box */
+.setup-box { background: #fff; max-width: 500px; margin: 100px auto; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.setup-box h1 { margin-bottom: 20px; text-align: center; color: #1e5a32; }
+
+/* Forms */
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; font-weight: 600; margin-bottom: 5px; }
+input, select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+.inline-form { display: flex; gap: 10px; margin-bottom: 15px; }
+.inline-form input, .inline-form select { flex: 1; }
+
+/* Buttons */
+button { padding: 10px 15px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; color: white; }
+.btn-primary { background-color: #2980b9; width: 100%; font-size: 16px; }
+.btn-success { background-color: #27ae60; }
+.btn-danger { background-color: #c0392b; }
+.btn-sm { padding: 5px 8px; font-size: 12px; background: #7f8c8d; }
+
+/* Dashboard Header */
+header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.summary-pills { display: flex; gap: 15px; }
+.pill { padding: 10px 20px; border-radius: 20px; font-weight: bold; color: #fff; }
+.pill.budget { background: #2980b9; }
+.pill.expenses { background: #c0392b; }
+.pill.balance { background: #27ae60; }
+
+/* Grid Layout */
+.dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.panel { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.panel h2 { margin-bottom: 15px; color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-bottom: 5px; }
+
+/* Tables matching Excel styling */
+.data-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
+.excel-style th, .excel-style td { border: 1px solid #dcdcdc; padding: 8px 12px; text-align: left; }
+.excel-style thead th { background-color: #1e5a32; color: white; } /* Excel Green */
+.excel-style tfoot th { background-color: #dcedc8; color: #333; }
+.excel-style tbody tr:nth-child(even) { background-color: #f9f9f9; }
+input[type="checkbox"] { transform: scale(1.5); cursor: pointer; }
+
+/* Add these at the bottom of your existing style.css */
+.panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 2px solid #ecf0f1; padding-bottom: 5px; }
+.panel-header h2 { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.btn-secondary { background-color: #95a5a6; }
+.btn-edit { background-color: #f39c12; color: white; padding: 4px 6px; border: none; border-radius: 3px; cursor: pointer; margin-right: 4px;}
+.btn-del { background-color: #e74c3c; color: white; padding: 4px 6px; border: none; border-radius: 3px; cursor: pointer;}
