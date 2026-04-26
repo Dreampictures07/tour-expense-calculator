@@ -32,7 +32,7 @@
                 </div>
             </div>
 
-            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ccc;">
+            <hr>
 
             <h3>Or Create New Tour</h3>
             <form id="createTourForm">
@@ -60,15 +60,23 @@
                 <button onclick="location.reload()" class="btn-sm btn-outline">← Back to Menu</button>
             </div>
             <div class="summary-pills">
-                <div class="pill budget">Budget: <span id="calcTotalBudget">₹0</span></div>
-                <div class="pill expenses">Expenses: <span id="calcTotalExpenses">₹0</span></div>
-                <div class="pill balance">Balance: <span id="calcOverallBalance">₹0</span></div>
+                <div class="pill budget">Total Budget: <span id="calcTotalBudget">₹0</span></div>
+                <div class="pill expenses">Total Expenses: <span id="calcTotalExpenses">₹0</span></div>
+                <div class="pill balance">Overall Balance: <span id="calcOverallBalance">₹0</span></div>
             </div>
         </header>
 
+        <div id="sponsor-section" class="sponsor-card">
+            </div>
+
+        <div class="mobile-tabs">
+            <button class="tab-btn active" data-target="squad-panel">Squad Advances</button>
+            <button class="tab-btn" data-target="expenses-panel">Travel Expenses</button>
+        </div>
+
         <div class="dashboard-grid">
             
-            <div class="panel">
+            <div class="panel active-panel" id="squad-panel">
                 <div class="panel-header">
                     <h2>Squad Advances</h2>
                     <button id="downloadMembersPdf" class="btn-sm btn-primary-light">📄 PDF</button>
@@ -108,7 +116,7 @@
                 </div>
             </div>
 
-            <div class="panel">
+            <div class="panel" id="expenses-panel">
                 <div class="panel-header">
                     <h2>Travel Expenses</h2>
                     <button id="downloadExpensesPdf" class="btn-sm btn-primary-light">📄 PDF</button>
