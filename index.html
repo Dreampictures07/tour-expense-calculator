@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Budget & Squad Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    
+    <div id="setup-screen" class="screen active">
+        <div class="setup-box">
+            <h1>Tour Manager</h1>
+            
+            <div class="existing-tours">
+                <h3>Load Existing Tour</h3>
+                <div class="inline-form">
+                    <select id="existingToursDropdown">
+                        <option value="">-- Select a Tour --</option>
+                    </select>
+                    <button id="loadTourBtn" class="btn-success">Load</button>
+                </div>
+            </div>
+
+            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ccc;">
+
+            <h3>Or Create New Tour</h3>
+            <form id="createTourForm">
+                <div class="form-group">
+                    <label>Tour Name</label>
+                    <input type="text" id="tourName" placeholder="e.g., Kerala Trip 2026" required>
+                </div>
+                <div class="form-group">
+                    <label>Total Number of Members</label>
+                    <input type="number" id="tourMembers" placeholder="e.g., 12" required>
+                </div>
+                <div class="form-group">
+                    <label>Per Member Amount (₹)</label>
+                    <input type="number" id="tourAmount" placeholder="e.g., 7000" required>
+                </div>
+                <button type="submit" class="btn-primary">Start New Tracker</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="dashboard-screen" class="screen">
+        <header>
+            <div>
+                <h1 id="displayTourName">Tour Dashboard</h1>
+                <button onclick="location.reload()" class="btn-sm btn-secondary" style="margin-top: 5px;">← Back to Menu</button>
+            </div>
+            <div class="summary-pills">
+                <div class="pill budget">Total Budget: <span id="calcTotalBudget">₹0</span></div>
+                <div class="pill expenses">Total Expenses: <span id="calcTotalExpenses">₹0</span></div>
+                <div class="pill balance">Overall Balance: <span id="calcOverallBalance">₹0</span></div>
+            </div>
+        </header>
+
+        <div class="dashboard-grid">
+            
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Squad Advances & Balance</h2>
+                    <button id="downloadMembersPdf" class="btn-sm btn-primary">📄 Download PDF</button>
+                </div>
+                <form id="addMemberForm" class="inline-form">
+                    <input type="hidden" id="editMemberId">
+                    <input type="text" id="memberName" placeholder="Member Name" required>
+                    <input type="number" id="memberAdvance" placeholder="Advance Paid" required>
+                    <button type="submit" id="saveMemberBtn" class="btn-success">Save</button>
+                    <button type="button" id="cancelMemberEdit" class="btn-secondary" style="display:none;">Cancel</button>
+                </form>
+                
+                <table id="membersTable" class="data-table excel-style">
+                    <thead>
+                        <tr>
+                            <th>Squad</th>
+                            <th>Amount</th>
+                            <th>Paid</th>
+                            <th>Advance</th>
+                            <th>Balance</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Total</th>
+                            <th id="totBase">0</th>
+                            <th></th>
+                            <th id="totAdv">0</th>
+                            <th id="totBal">0</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Travel Expenses</h2>
+                    <button id="downloadExpensesPdf" class="btn-sm btn-primary">📄 Download PDF</button>
+                </div>
+                <form id="addExpenseForm" class="inline-form">
+                    <input type="hidden" id="editExpenseId">
+                    <select id="expCategory" required>
+                        <option value="Van Rent">Van Rent</option>
+                        <option value="Room rent">Room rent</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Toll">Toll</option>
+                        <option value="Others">Others</option>
+                    </select>
+                    <input type="text" id="expDesc" placeholder="Comments (Optional)">
+                    <input type="date" id="expDate" required>
+                    <input type="number" id="expAmount" placeholder="Amount" required>
+                    <button type="submit" id="saveExpenseBtn" class="btn-danger">Save</button>
+                    <button type="button" id="cancelExpenseEdit" class="btn-secondary" style="display:none;">Cancel</button>
+                </form>
+
+                <table id="expensesTable" class="data-table excel-style">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Comments</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="3" style="text-align: right;">Total Expenses</th>
+                            <th id="totExp" colspan="2">₹0.00</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
