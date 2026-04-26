@@ -153,13 +153,13 @@ function listenToMembers() {
             const checkedStatus = d.isPaid ? 'checked disabled' : 'disabled';
             tbody += `
                 <tr>
-                    <td>${d.name}</td>
-                    <td>${d.amount}</td>
-                    <td style="text-align:center;"><input type="checkbox" ${checkedStatus}></td>
-                    <td>${d.advance}</td>
-                    <td>${d.balance}</td>
-                    <td>
-                        <button class="btn-edit" onclick="triggerEditMember('${id}', '${d.name}', '${d.advance}')">✎</button>
+                    <td data-label="Squad">${d.name}</td>
+                    <td data-label="Amount">₹${d.amount}</td>
+                    <td data-label="Fully Paid"><input type="checkbox" ${checkedStatus}></td>
+                    <td data-label="Advance Paid">₹${d.advance}</td>
+                    <td data-label="Balance">₹${d.balance}</td>
+                    <td data-label="Action">
+                        <button class="btn-edit" onclick="triggerEditMember('${id}', '${d.name}', '${d.advance}')">✎ Edit</button>
                         <button class="btn-del" onclick="deleteRecord('members', '${id}')">X</button>
                     </td>
                 </tr>
@@ -184,12 +184,12 @@ function listenToExpenses() {
 
             tbody += `
                 <tr>
-                    <td>${d.category}</td>
-                    <td>${d.desc}</td>
-                    <td>${d.date}</td>
-                    <td>₹${d.amount.toFixed(2)}</td>
-                    <td>
-                        <button class="btn-edit" onclick="triggerEditExpense('${id}', '${d.category}', '${d.desc}', '${d.date}', '${d.amount}')">✎</button>
+                    <td data-label="Category">${d.category}</td>
+                    <td data-label="Comments">${d.desc}</td>
+                    <td data-label="Date">${d.date}</td>
+                    <td data-label="Amount">₹${d.amount.toFixed(2)}</td>
+                    <td data-label="Action">
+                        <button class="btn-edit" onclick="triggerEditExpense('${id}', '${d.category}', '${d.desc}', '${d.date}', '${d.amount}')">✎ Edit</button>
                         <button class="btn-del" onclick="deleteRecord('expenses', '${id}')">X</button>
                     </td>
                 </tr>
