@@ -1,18 +1,15 @@
-/* --- Google Fonts Import --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* --- Base Styles --- */
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
 body { background-color: #f4f7f8; color: #334155; line-height: 1.5; }
 .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
 
-/* --- Screen Toggling --- */
 .screen { display: none; animation: fadeIn 0.3s ease-in-out; }
 .screen.active { display: block; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-/* --- Header & Pills --- */
-.dashboard-header { display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #e2e8f0; }
+/* Header & Pills */
+.dashboard-header { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e2e8f0; }
 .header-titles h1 { color: #0f172a; font-size: 24px; font-weight: 700; margin-bottom: 5px; }
 
 .summary-pills { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -21,290 +18,121 @@ body { background-color: #f4f7f8; color: #334155; line-height: 1.5; }
 .pill.expenses { background: #fee2e2; color: #dc2626; border: 1px solid #fecaca; }
 .pill.balance { background: #dcfce7; color: #16a34a; border: 1px solid #bbf7d0; }
 
-/* --- Grid Layout for Desktop vs Mobile --- */
+/* Sponsor Card */
+.sponsor-card { background: #ffffff; padding: 15px 20px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0; margin-bottom: 20px; }
+.sponsor-display { display: flex; justify-content: space-between; align-items: center; width: 100%; font-size: 15px; color: #1e293b; }
+.sponsor-display strong { color: #0f172a; font-weight: 700;}
+.sponsor-form { display: flex; gap: 10px; width: 100%; }
+.sponsor-form input { flex: 1; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 14px; }
+.sponsor-form input:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
+
+/* Grid Layout */
 .dashboard-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
 @media (min-width: 1024px) {
     .dashboard-header { flex-direction: row; justify-content: space-between; align-items: center; }
     .dashboard-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
 }
 
-/* --- Panel & Cards --- */
-.panel { background: #ffffff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); border: 1px solid #f1f5f9; }
+/* Panel & Cards */
+.panel { background: #ffffff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border: 1px solid #f1f5f9; }
 .panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
 .panel-header h2 { font-size: 18px; color: #1e293b; font-weight: 600; }
 
-/* --- Responsive Forms --- */
+/* Responsive Forms */
 .responsive-form { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
-.responsive-form input, .responsive-form select { 
-    flex: 1 1 120px; /* Allows inputs to shrink/grow and wrap to new lines */
-    padding: 10px 12px; 
-    border: 1px solid #cbd5e1; 
-    border-radius: 6px; 
-    font-size: 14px; 
-    color: #334155;
-    outline: none;
-    transition: border-color 0.2s;
-}
+.responsive-form input, .responsive-form select { flex: 1 1 120px; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; color: #334155; outline: none; transition: border-color 0.2s; }
 .responsive-form input:focus, .responsive-form select:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
 .responsive-form button { flex: 0 1 auto; }
 
-/* --- Buttons --- */
+/* Buttons */
 button { padding: 10px 16px; border: none; border-radius: 6px; font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.2s; }
 button:hover { transform: translateY(-1px); }
 .btn-primary { background-color: #2563eb; color: white; width: 100%; }
-.btn-primary:hover { background-color: #1d4ed8; }
 .btn-primary-light { background-color: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
-.btn-primary-light:hover { background-color: #dbeafe; }
 .btn-success { background-color: #10b981; color: white; }
-.btn-success:hover { background-color: #059669; }
 .btn-danger { background-color: #ef4444; color: white; }
-.btn-danger:hover { background-color: #dc2626; }
 .btn-secondary { background-color: #64748b; color: white; }
 .btn-outline { background-color: transparent; color: #64748b; border: 1px solid #cbd5e1; }
-.btn-outline:hover { background-color: #f8fafc; color: #334155; }
 .btn-sm { padding: 6px 12px; font-size: 12px; }
 .btn-edit { background-color: #f59e0b; color: white; padding: 4px 8px; border-radius: 4px; margin-right: 4px; font-size: 12px;}
 .btn-del { background-color: #ef4444; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px;}
 
-/* --- Responsive Modern Tables --- */
-.table-responsive { 
-    width: 100%; 
-    overflow-x: auto; /* Enables horizontal scroll on small devices */
-    -webkit-overflow-scrolling: touch; 
-    border-radius: 8px;
-    border: 1px solid #e2e8f0;
-}
-.modern-table { width: 100%; border-collapse: collapse; font-size: 14px; white-space: nowrap; /* Prevents text from breaking into multiple lines on mobile */ }
+/* Desktop Tables */
+.table-responsive { width: 100%; overflow-x: auto; border-radius: 8px; border: 1px solid #e2e8f0; }
+.modern-table { width: 100%; border-collapse: collapse; font-size: 14px; white-space: nowrap; }
 .modern-table th, .modern-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #e2e8f0; }
-.modern-table thead th { background-color: #f8fafc; color: #475569; font-weight: 600; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; }
-.modern-table tbody tr:hover { background-color: #f1f5f9; }
+.modern-table thead th { background-color: #f8fafc; color: #475569; font-weight: 600; text-transform: uppercase; font-size: 12px; }
 .modern-table tfoot th { background-color: #f8fafc; color: #1e293b; font-weight: 700; border-top: 2px solid #e2e8f0; }
 input[type="checkbox"] { width: 16px; height: 16px; accent-color: #10b981; cursor: pointer; }
 
-/* --- Setup Form Tweaks (Modern UI) --- */
-.setup-box { 
-    background: #ffffff; 
-    max-width: 480px; 
-    margin: 80px auto; 
-    padding: 40px; 
-    border-radius: 16px; 
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05); 
-    border: 1px solid #f8fafc; 
-}
+/* Setup Form Modern UI */
+.setup-box { background: #ffffff; max-width: 480px; margin: 80px auto; padding: 40px; border-radius: 16px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); border: 1px solid #f8fafc; }
+.setup-box h1 { font-size: 28px; color: #0f172a; text-align: center; margin-bottom: 30px; letter-spacing: -0.5px; }
+.setup-box h3 { font-size: 16px; color: #475569; font-weight: 600; margin-bottom: 16px; }
+.existing-tours .inline-form { display: flex; gap: 12px; }
+.existing-tours select { flex: 1; padding: 12px 16px; border: 1px solid #e2e8f0; border-radius: 8px; background-color: #f8fafc; color: #334155; font-size: 15px; appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 16px center; background-size: 16px; cursor: pointer; }
+.existing-tours button { padding: 12px 24px; border-radius: 8px; }
+hr { border: 0; height: 1px; background: #e2e8f0; margin: 35px 0; position: relative; }
+hr::after { content: "OR"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #ffffff; padding: 0 15px; color: #94a3b8; font-size: 12px; font-weight: 600; letter-spacing: 1px; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 14px; font-weight: 500; color: #334155; margin-bottom: 8px; }
+.form-group input { width: 100%; padding: 14px 16px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 15px; color: #1e293b; background-color: #ffffff; }
+.form-group input::placeholder { color: #94a3b8; }
+.setup-box .btn-primary { margin-top: 10px; padding: 14px; font-size: 16px; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2); }
 
-.setup-box h1 { 
-    font-size: 28px; 
-    color: #0f172a; 
-    font-weight: 700; 
-    text-align: center; 
-    margin-bottom: 30px; 
-    letter-spacing: -0.5px; 
-}
-
-.setup-box h3 { 
-    font-size: 16px; 
-    color: #475569; 
-    font-weight: 600; 
-    margin-bottom: 16px; 
-}
-
-/* Load Tour Section */
-.existing-tours .inline-form { 
-    display: flex; 
-    gap: 12px; 
-}
-
-.existing-tours select { 
-    flex: 1; 
-    padding: 12px 16px; 
-    border: 1px solid #e2e8f0; 
-    border-radius: 8px; 
-    background-color: #f8fafc; 
-    color: #334155; 
-    font-size: 15px; 
-    appearance: none; /* Removes native ugly arrow */
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 16px center;
-    background-size: 16px;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.existing-tours button { 
-    padding: 12px 24px; 
-    border-radius: 8px; 
-}
-
-/* Sleek Divider */
-hr { 
-    border: 0; 
-    height: 1px; 
-    background: #e2e8f0; 
-    margin: 35px 0; 
-    position: relative; 
-}
-
-hr::after { 
-    content: "OR"; 
-    position: absolute; 
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    background: #ffffff; 
-    padding: 0 15px; 
-    color: #94a3b8; 
-    font-size: 12px; 
-    font-weight: 600; 
-    letter-spacing: 1px; 
-}
-
-/* Inputs */
-.form-group { 
-    margin-bottom: 20px; 
-}
-
-.form-group label { 
-    display: block; 
-    font-size: 14px; 
-    font-weight: 500; 
-    color: #334155; 
-    margin-bottom: 8px; 
-}
-
-.form-group input { 
-    width: 100%; 
-    padding: 14px 16px; 
-    border: 1px solid #e2e8f0; 
-    border-radius: 8px; 
-    font-size: 15px; 
-    color: #1e293b; 
-    background-color: #ffffff; 
-    transition: all 0.2s ease; 
-}
-
-.form-group input::placeholder { 
-    color: #94a3b8; 
-}
-
-.form-group input:focus, .existing-tours select:focus { 
-    outline: none; 
-    border-color: #3b82f6; 
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1); 
-    background-color: #ffffff; 
-}
-
-/* Start Tracker Button */
-.setup-box .btn-primary { 
-    margin-top: 10px; 
-    padding: 14px; 
-    font-size: 16px; 
-    border-radius: 8px; 
-    font-weight: 600; 
-    letter-spacing: 0.5px; 
-    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2); 
-}
+/* Mobile Tabs (Hidden on Desktop) */
+.mobile-tabs { display: none; }
 
 /* --- ULTIMATE MOBILE OVERRIDE (Phones & Tablets) --- */
 @media (max-width: 768px) {
-    /* 1. Header & Setup Fixes */
+    /* Header Fixes */
     .dashboard-header { align-items: flex-start; }
     .summary-pills { flex-direction: column; width: 100%; gap: 8px; }
     .pill { width: 100%; justify-content: space-between; padding: 12px 16px; font-size: 15px; }
     .setup-box { margin: 20px; padding: 25px 20px; }
 
-    /* 2. Stack Forms */
+    /* Sponsor Mobile Fixes */
+    .sponsor-card { padding: 15px; }
+    .sponsor-display { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .sponsor-display > div { align-self: flex-end; }
+    .sponsor-form { flex-direction: column; }
+
+    /* The Mobile Tabs */
+    .mobile-tabs { display: flex; background: #e2e8f0; padding: 4px; border-radius: 10px; margin-bottom: 20px; }
+    .tab-btn { flex: 1; background: transparent; color: #64748b; padding: 12px; border-radius: 8px; font-weight: 600; font-size: 14px; text-align: center; border: none; transition: all 0.2s ease; }
+    .tab-btn.active { background: #ffffff; color: #0f172a; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); }
+    
+    /* Toggle Panel Visibility */
+    .dashboard-grid { display: block; }
+    .panel { display: none; }
+    .panel.active-panel { display: block; animation: fadeIn 0.3s ease; }
+
+    /* Stack Forms */
     .responsive-form { flex-direction: column; gap: 12px; }
     .responsive-form input, .responsive-form select, .responsive-form button { width: 100%; flex: none; }
     
-    /* 3. Transform Tables into Premium Native Cards */
+    /* Transform Tables into Premium Native Cards */
     .table-responsive { border: none; background: transparent; padding: 0; }
     .modern-table thead { display: none; }
     .modern-table, .modern-table tbody, .modern-table tr, .modern-table td, .modern-table tfoot { display: block; width: 100%; }
     
-    /* The Main Card Container */
-    .modern-table tr { 
-        margin-bottom: 20px; 
-        border: 1px solid #e2e8f0; 
-        border-radius: 12px; 
-        background: #ffffff; 
-        box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.05); 
-        overflow: hidden; /* Keeps the header background inside the rounded corners */
-    }
-    
-    /* Card Header (The very first row item: Name or Category) */
-    .modern-table td:first-child {
-        background: #f8fafc;
-        border-bottom: 1px solid #e2e8f0;
-        font-size: 16px;
-        font-weight: 700;
-        color: #0f172a;
-        padding: 14px 16px;
-    }
-    /* Hide the "SQUAD" or "CATEGORY" label, as the bold text makes it obvious */
+    .modern-table tr { margin-bottom: 20px; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.05); overflow: hidden; }
+    .modern-table td:first-child { background: #f8fafc; border-bottom: 1px solid #e2e8f0; font-size: 16px; font-weight: 700; color: #0f172a; padding: 14px 16px; }
     .modern-table td:first-child::before { display: none; }
+    .modern-table td:not(:first-child) { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; border-bottom: 1px dashed #e2e8f0; font-size: 14px; }
+    .modern-table td:last-child { border-bottom: none; background: #fafafa; padding: 12px 16px; justify-content: flex-end; gap: 10px; }
+    .modern-table td:last-child::before { display: none; } 
+    .modern-table td::before { content: attr(data-label); font-weight: 600; color: #64748b; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
     
-    /* Card Body Rows */
-    .modern-table td:not(:first-child) { 
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center; 
-        padding: 10px 16px; 
-        border-bottom: 1px dashed #e2e8f0; /* Soft receipt-style lines */
-        font-size: 14px;
-        color: #1e293b;
-    }
-    
-    /* Card Footer (Action Buttons) */
-    .modern-table td:last-child { 
-        border-bottom: none; 
-        background: #fafafa; 
-        padding: 12px 16px;
-        justify-content: flex-end; /* Push buttons to the right */
-        gap: 10px;
-    }
-    .modern-table td:last-child::before { display: none; } /* Hide "ACTION" label */
-    
-    /* Inject the labels on the left side of the data */
-    .modern-table td::before { 
-        content: attr(data-label); 
-        font-weight: 600; 
-        color: #64748b; 
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    
-    /* Fix Checkbox & Button sizes */
     .modern-table td input[type="checkbox"] { transform: scale(1.4); }
     .modern-table td .btn-edit, .modern-table td .btn-del { padding: 8px 14px; font-size: 13px; margin: 0; }
 
-    /* --- THE FOOTER FIX --- */
-    /* Rebuild the totals into a sleek, dark summary dashboard */
-    .modern-table tfoot tr { 
-        background: #0f172a; 
-        border: none; 
-        padding: 16px; 
-        display: grid; 
-        grid-template-columns: 1fr 1fr; /* Split into a 2-column grid */
-        gap: 15px;
-    }
-    
-    .modern-table tfoot th { 
-        display: flex; 
-        flex-direction: column; 
-        align-items: flex-start; 
-        padding: 0; 
-        border: none; 
-        background: transparent; 
-        color: #f8fafc; 
-        font-size: 18px; 
-    }
-    
+    /* Rebuild Footer Dashboard */
+    .modern-table tfoot tr { background: #0f172a; border: none; padding: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .modern-table tfoot th { display: flex; flex-direction: column; align-items: flex-start; padding: 0; border: none; background: transparent; color: #f8fafc; font-size: 18px; }
     .modern-table tfoot th:empty { display: none; }
-    .modern-table tfoot th:first-child { display: none; } /* Hide the generic "Total" text */
+    .modern-table tfoot th:first-child { display: none; } 
 
-    /* Dynamically inject labels for the totals so they look like a dashboard */
     #totBase::before { content: "Total Base"; font-size: 11px; color: #94a3b8; text-transform: uppercase; margin-bottom: 4px; }
     #totAdv::before { content: "Total Advance"; font-size: 11px; color: #94a3b8; text-transform: uppercase; margin-bottom: 4px; }
     #totBal::before { content: "Total Balance"; font-size: 11px; color: #94a3b8; text-transform: uppercase; margin-bottom: 4px; }
